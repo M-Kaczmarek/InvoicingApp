@@ -18,7 +18,7 @@ public class Company {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "company", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Invoice> invoices;
 
     public Company() {
