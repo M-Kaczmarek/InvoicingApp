@@ -3,18 +3,18 @@ package pl.mariuszkaczmarek.invoicingapp.service;
 import org.springframework.stereotype.Service;
 import pl.mariuszkaczmarek.invoicingapp.model.Company;
 import pl.mariuszkaczmarek.invoicingapp.model.TransportCompany;
-import pl.mariuszkaczmarek.invoicingapp.repostiory.TransportRepository;
+import pl.mariuszkaczmarek.invoicingapp.repostiory.TransportCompanyRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CompanyService {
+public class TransportCompanyService {
 
-    private TransportRepository transportRepository;
+    private TransportCompanyRepository transportCompanyRepository;
 
-    public CompanyService(TransportRepository transportRepository) {
-        this.transportRepository = transportRepository;
+    public TransportCompanyService(TransportCompanyRepository transportCompanyRepository) {
+        this.transportCompanyRepository = transportCompanyRepository;
     }
 
     public TransportCompany addCompany(Company company){
@@ -22,21 +22,21 @@ public class CompanyService {
 //        invoices.stream()
 //            .forEach(i -> invoiceRepository.save(i));
 
-        return transportRepository.save((TransportCompany)company);
+        return transportCompanyRepository.save((TransportCompany)company);
     }
     public List<TransportCompany> findAll(){
-        return transportRepository.findAll();
+        return transportCompanyRepository.findAll();
     }
 
     public Optional<TransportCompany> findById(Long id){
-        return transportRepository.findById(id);
+        return transportCompanyRepository.findById(id);
     }
 
     public TransportCompany updateCompany(Company company){
-        return transportRepository.save((TransportCompany)company);
+        return transportCompanyRepository.save((TransportCompany)company);
     }
 
     public void deleteById(Long id){
-        transportRepository.deleteById(id);
+        transportCompanyRepository.deleteById(id);
     }
 }

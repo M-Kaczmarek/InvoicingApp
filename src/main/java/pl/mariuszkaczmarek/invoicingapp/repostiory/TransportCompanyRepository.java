@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import pl.mariuszkaczmarek.invoicingapp.model.TransportCompany;
 
 @Repository
-public interface TransportRepository extends JpaRepository<TransportCompany, Long> {
+public interface TransportCompanyRepository extends JpaRepository<TransportCompany, Long> {
 }

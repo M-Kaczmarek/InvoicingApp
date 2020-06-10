@@ -1,10 +1,8 @@
 package pl.mariuszkaczmarek.invoicingapp.controller;
 
 import org.springframework.web.bind.annotation.*;
-import pl.mariuszkaczmarek.invoicingapp.model.Company;
 import pl.mariuszkaczmarek.invoicingapp.model.Invoice;
-import pl.mariuszkaczmarek.invoicingapp.model.TransportCompany;
-import pl.mariuszkaczmarek.invoicingapp.service.CompanyService;
+import pl.mariuszkaczmarek.invoicingapp.service.TransportCompanyService;
 import pl.mariuszkaczmarek.invoicingapp.service.InvoiceService;
 
 import java.util.Optional;
@@ -12,11 +10,11 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/invoice")
 public class InvoiceController {
-    private CompanyService companyService;
+    private TransportCompanyService transportCompanyService;
     private InvoiceService invoiceService;
 
-    public InvoiceController(CompanyService companyService, InvoiceService invoiceService) {
-        this.companyService = companyService;
+    public InvoiceController(TransportCompanyService transportCompanyService, InvoiceService invoiceService) {
+        this.transportCompanyService = transportCompanyService;
         this.invoiceService = invoiceService;
     }
     @GetMapping
