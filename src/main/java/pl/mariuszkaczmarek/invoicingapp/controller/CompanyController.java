@@ -1,11 +1,12 @@
 package pl.mariuszkaczmarek.invoicingapp.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.bind.annotation.*;
 import pl.mariuszkaczmarek.invoicingapp.model.Company;
 import pl.mariuszkaczmarek.invoicingapp.model.TransportCompany;
 import pl.mariuszkaczmarek.invoicingapp.service.CompanyService;
 import pl.mariuszkaczmarek.invoicingapp.service.InvoiceService;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/company")
@@ -21,14 +22,25 @@ public class CompanyController {
     public Iterable<?> findAll(){
         return companyService.findAll();
     }
+
+    @GetMapping("/{id}")
+    public Optional<TransportCompany> findById(@RequestParam Long id){
+        return companyService.findById(id);
+    }
+
     @PostMapping
     public Company saveTransportCompany(@RequestBody TransportCompany company){
-
         return companyService.addCompany(company);
     }
-//    @PostMapping
-//    public Company saveItCompany(@RequestBody Com company){
-//        return companyService.addCompany(company);
-//    }
+    @PutMapping
+    public Company updateTransportCompany(@RequestBody TransportCompany company){
+        return companyService.updateCompany(company);
+    }
+    @DeleteMapping
+    public void deleteById(@RequestParam Long id){
+        companyService.deleteById(id);
+    }
+
+
 
 }

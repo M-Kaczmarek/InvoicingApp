@@ -6,6 +6,7 @@ import pl.mariuszkaczmarek.invoicingapp.model.TransportCompany;
 import pl.mariuszkaczmarek.invoicingapp.repostiory.TransportRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CompanyService {
@@ -15,6 +16,7 @@ public class CompanyService {
     public CompanyService(TransportRepository transportRepository) {
         this.transportRepository = transportRepository;
     }
+
     public TransportCompany addCompany(Company company){
 //        Set<Invoice> invoices = company.getInvoices();
 //        invoices.stream()
@@ -24,5 +26,17 @@ public class CompanyService {
     }
     public List<TransportCompany> findAll(){
         return transportRepository.findAll();
+    }
+
+    public Optional<TransportCompany> findById(Long id){
+        return transportRepository.findById(id);
+    }
+
+    public TransportCompany updateCompany(Company company){
+        return transportRepository.save((TransportCompany)company);
+    }
+
+    public void deleteById(Long id){
+        transportRepository.deleteById(id);
     }
 }
