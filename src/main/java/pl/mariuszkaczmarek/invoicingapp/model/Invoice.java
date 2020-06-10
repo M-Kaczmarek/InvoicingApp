@@ -1,18 +1,20 @@
 package pl.mariuszkaczmarek.invoicingapp.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 
 @Entity
 public class Invoice {
+    @ApiModelProperty(hidden = true)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String surrName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JsonIgnore
     private TransportCompany company;
 

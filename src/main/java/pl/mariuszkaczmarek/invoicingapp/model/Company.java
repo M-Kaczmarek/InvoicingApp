@@ -2,6 +2,7 @@ package pl.mariuszkaczmarek.invoicingapp.model;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -11,6 +12,7 @@ import java.util.Set;
 //@JsonSubTypes.Type(name = "transportCompany", value = TransportCompany.class)
 @MappedSuperclass
 public class Company {
+    @ApiModelProperty(hidden = true)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
