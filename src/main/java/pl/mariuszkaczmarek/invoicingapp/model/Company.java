@@ -1,17 +1,22 @@
 package pl.mariuszkaczmarek.invoicingapp.model;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
+//@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "type")
+//@JsonSubTypes.Type(name = "transportCompany", value = TransportCompany.class)
+@MappedSuperclass
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "company",cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "company", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private Set<Invoice> invoices;
 
     public Company() {
@@ -40,9 +45,6 @@ public class Company {
 
     public void setInvoices(Set<Invoice> invoices) {
         this.invoices = invoices;
-       for (Invoice invoice : invoices) {
-           invoice.setCompany(this);
-        }
     }
 
 

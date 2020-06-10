@@ -14,7 +14,7 @@ public class Invoice {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
-    private Company company;
+    private TransportCompany company;
 
     public Invoice() {
     }
@@ -47,7 +47,7 @@ public class Invoice {
         return company;
     }
 
-    public void setCompany(Company company) {
+    public void setCompany(TransportCompany company) {
         this.company = company;
     }
 }

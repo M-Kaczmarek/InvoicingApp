@@ -2,23 +2,27 @@ package pl.mariuszkaczmarek.invoicingapp.service;
 
 import org.springframework.stereotype.Service;
 import pl.mariuszkaczmarek.invoicingapp.model.Company;
-import pl.mariuszkaczmarek.invoicingapp.repostiory.CompanyRepository;
+import pl.mariuszkaczmarek.invoicingapp.model.TransportCompany;
+import pl.mariuszkaczmarek.invoicingapp.repostiory.TransportRepository;
+
+import java.util.List;
 
 @Service
 public class CompanyService {
 
-    private CompanyRepository companyRepository;
+    private TransportRepository transportRepository;
 
-    public CompanyService(CompanyRepository companyRepository) {
-        this.companyRepository = companyRepository;
+    public CompanyService(TransportRepository transportRepository) {
+        this.transportRepository = transportRepository;
     }
-    public Company addCompany(Company company){
+    public TransportCompany addCompany(Company company){
 //        Set<Invoice> invoices = company.getInvoices();
 //        invoices.stream()
 //            .forEach(i -> invoiceRepository.save(i));
-        return companyRepository.save(company);
+
+        return transportRepository.save((TransportCompany)company);
     }
-    public Iterable<Company> findAll(){
-        return companyRepository.findAll();
+    public List<TransportCompany> findAll(){
+        return transportRepository.findAll();
     }
 }

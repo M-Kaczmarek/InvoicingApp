@@ -1,8 +1,9 @@
 package pl.mariuszkaczmarek.invoicingapp.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.bind.annotation.*;
 import pl.mariuszkaczmarek.invoicingapp.model.Company;
-import pl.mariuszkaczmarek.invoicingapp.model.Invoice;
+import pl.mariuszkaczmarek.invoicingapp.model.TransportCompany;
 import pl.mariuszkaczmarek.invoicingapp.service.CompanyService;
 import pl.mariuszkaczmarek.invoicingapp.service.InvoiceService;
 
@@ -17,12 +18,17 @@ public class CompanyController {
         this.invoiceService = invoiceService;
     }
     @GetMapping
-    public Iterable<Company> findAll(){
+    public Iterable<?> findAll(){
         return companyService.findAll();
     }
     @PostMapping
-    public Company save(@RequestBody Company company){
+    public Company saveTransportCompany(@RequestBody TransportCompany company){
+
         return companyService.addCompany(company);
     }
+//    @PostMapping
+//    public Company saveItCompany(@RequestBody Com company){
+//        return companyService.addCompany(company);
+//    }
 
 }
