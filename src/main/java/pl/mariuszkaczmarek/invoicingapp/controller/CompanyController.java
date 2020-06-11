@@ -23,44 +23,50 @@ public class CompanyController {
 
     public CompanyController(TransportCompanyService transportCompanyService) {
         this.transportCompanyService = transportCompanyService;
-
     }
+
     @ApiOperation(value = "Find All companies",notes = "Give companies with invoices ",httpMethod = "GET")
     @GetMapping
     public ResponseEntity<List<TransportCompany>> findAll(){
-        logger.info("GET /api/company -> findall start");
+        logger.info("Starting find all Transport companies");
         List<TransportCompany> companyIterator =  transportCompanyService.findAll();
-        logger.info("GET /api/company -> findall end");
+        logger.info("Found all Transport companies");
         return ResponseEntity.ok(companyIterator);
     }
     @ApiOperation(value = "Find company by id", notes = "Give the company with invoices", httpMethod = "GET")
     @GetMapping("/{id}")
     public ResponseEntity<Optional<TransportCompany>> findById(@PathVariable Long id){
-        logger.info("Transport company start working");
+        logger.info("Starting find Transport companies with id="+id);
         Optional<TransportCompany> company =transportCompanyService.findById(id);
         if(company.isEmpty()){
             logger.info("Transport company does not exist with given id="+id);
             return ResponseEntity.notFound().build();
         }
-        logger.info("Transport company end working");
+        logger.info("Found transport company with id="+id);
         return ResponseEntity.ok(company);
     }
     @ApiOperation(value = "Save the company", notes = "Save the company with invoices to database", httpMethod = "POST")
     @PostMapping
     public ResponseEntity<Company> saveTransportCompany(@RequestBody TransportCompany company){
+        logger.info("Starting save Transport companies to database");
         TransportCompany transportCompany = transportCompanyService.addCompany(company);
+        logger.info("Saved transport company with id="+transportCompany.getId());
         return ResponseEntity.created(URI.create("/"+transportCompany.getId())).body(transportCompany);
     }
     @ApiOperation(value = "Update the company", notes = "Save the company with new invoice or correct later invoices", httpMethod = "PUT")
     @PutMapping
     public ResponseEntity<Company> updateTransportCompany(@RequestBody TransportCompany company){
+        logger.info("Starting update transport company");
         TransportCompany transportCompany = transportCompanyService.updateCompany(company);
+        logger.info("Updated transport company with id="+transportCompany.getId());
         return ResponseEntity.noContent().build();
     }
     @ApiOperation(value = "Delete the company by id", notes = "Delete the company from database with invoices by id company", httpMethod = "DELETE")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable Long id){
+        logger.info("Starting delete transport company");
         transportCompanyService.deleteById(id);
+        logger.info("Deleted transport company with id="+id);
         return ResponseEntity.noContent().build();
     }
 }

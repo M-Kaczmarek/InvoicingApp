@@ -11,7 +11,7 @@ import java.util.Set;
 //@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "type")
 //@JsonSubTypes.Type(name = "transportCompany", value = TransportCompany.class)
 @MappedSuperclass
-public class Company {
+public abstract class Company {
     @ApiModelProperty(hidden = true)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

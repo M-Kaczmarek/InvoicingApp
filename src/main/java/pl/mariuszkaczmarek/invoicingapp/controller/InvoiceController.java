@@ -28,38 +28,49 @@ public class InvoiceController {
     @ApiOperation(value = "Find All invoices", notes = "provide all invoices from database", httpMethod = "GET")
     @GetMapping
     public ResponseEntity<List<Invoice>> findAll() {
+        logger.info("Starting find all invoices");
         List<Invoice> invoices = invoiceService.findAll();
+        logger.info("Found all invoices");
         return ResponseEntity.ok(invoices);
     }
 
     @ApiOperation(value = "Find invoice by id", notes = "Give the invoice from database by id", httpMethod = "GET")
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Invoice>> findById(@RequestParam Long id) {
+        logger.info("Starting find Invoice with id="+id);
         Optional<Invoice> invoice = invoiceService.findById(id);
         if (invoice.isEmpty()) {
+            logger.info("Invoice does not exist with given id="+id);
             return ResponseEntity.notFound().build();
         }
+        logger.info("Found Invoice with id="+id);
         return ResponseEntity.ok(invoice);
     }
 
     @ApiOperation(value = "Save the invoice", notes = "Save the invoice to database", httpMethod = "POST")
     @PostMapping
     public ResponseEntity<Invoice> save(@RequestBody Invoice invoice) {
+        logger.info("Starting save Invoice to database");
         Invoice result = invoiceService.addInvoice(invoice);
+        logger.info("Saved Invoice with id="+result.getId());
         return ResponseEntity.created(URI.create("/" + result.getId())).build();
     }
 
     @ApiOperation(value = "Update the invoice", notes = "Correct invoice", httpMethod = "PUT")
     @PutMapping
     public ResponseEntity<Invoice> updateInvoice(@RequestBody Invoice invoice) {
-        invoiceService.updateInvoice(invoice);
+        logger.info("Starting update Invoice");
+        Invoice newInvoice = invoiceService.updateInvoice(invoice);
+        logger.info("Updated Invoice with id="+newInvoice.getId());
         return ResponseEntity.noContent().build();
     }
 
     @ApiOperation(value = "Delete the invoice by id", notes = "Delete the invoice from database by id", httpMethod = "DELETE")
     @DeleteMapping
     public ResponseEntity<Void> deleteById(@RequestParam Long id) {
+        logger.info("Starting delete Invoice");
         invoiceService.deleteById(id);
+        logger.info("Deleted Invoice with id="+id);
         return ResponseEntity.noContent().build();
     }
 }
