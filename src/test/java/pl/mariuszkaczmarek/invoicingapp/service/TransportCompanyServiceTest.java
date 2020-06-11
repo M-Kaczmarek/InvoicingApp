@@ -2,8 +2,6 @@ package pl.mariuszkaczmarek.invoicingapp.service;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pl.mariuszkaczmarek.invoicingapp.model.Company;
-import pl.mariuszkaczmarek.invoicingapp.model.Invoice;
 import pl.mariuszkaczmarek.invoicingapp.model.TransportCompany;
 import pl.mariuszkaczmarek.invoicingapp.repostiory.TransportCompanyRepository;
 
@@ -12,8 +10,9 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class TransportCompanyServiceTest {
 
