@@ -16,7 +16,7 @@ import pl.mariuszkaczmarek.invoicingapp.repostiory.TransportCompanyRepository;
 import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class CompanyControllerIntegrationTest {
+public class CompanyControllerIT {
 
     @LocalServerPort
     private int port;
@@ -27,13 +27,14 @@ public class CompanyControllerIntegrationTest {
     @Autowired
     private TransportCompanyRepository transportCompanyRepository;
 
-
     @Test
     public void getAll_should_return_status_ok() throws Exception {
         //given
         var size = this.transportCompanyRepository.findAll().size();
+
         //when
         ResponseEntity<TransportCompany[]> result = testRestTemplate.getForEntity("http://localhost:" + port + "/api/company", TransportCompany[].class);
+
         //then
         assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(result.getBody().length).isEqualTo(size);

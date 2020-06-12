@@ -28,8 +28,10 @@ class TransportCompanyServiceTest {
         companyList.add(transportCompany1);
         companyList.add(transportCompany2);
         when(transportCompanyRepository.findAll()).thenReturn(companyList);
+
         //when
         var transportCompanyList = transportCompanyService.findAll();
+
         //then
         assertThat(transportCompanyList).hasSize(companyList.size());
     }
@@ -46,8 +48,10 @@ class TransportCompanyServiceTest {
         companyList.add(transportCompany1);
         companyList.add(transportCompany2);
         when(transportCompanyService.findById(1L)).thenReturn(Optional.of(companyList.get(1)));
+
         //when
         Optional<TransportCompany> company = transportCompanyService.findById(1L);
+
         //then
         assertThat(company.get()).isEqualTo(companyList.get(1));
     }
@@ -59,9 +63,11 @@ class TransportCompanyServiceTest {
         var transportCompanyService = new TransportCompanyService(transportCompanyRepository);
         var transportCompany1 = new TransportCompany();
         when(transportCompanyRepository.save(any(TransportCompany.class))).thenReturn(transportCompany1);
-        //then
-        TransportCompany transportCompany = transportCompanyService.addCompany(transportCompany1);
+
         //when
+        TransportCompany transportCompany = transportCompanyService.addCompany(transportCompany1);
+
+        //then
         assertThat(transportCompany).isNotNull();
         assertThat(transportCompany).isEqualTo(transportCompany1);
 

@@ -17,12 +17,8 @@ public class TransportCompanyService {
         this.transportCompanyRepository = transportCompanyRepository;
     }
 
-    public TransportCompany addCompany(Company company){
-//        Set<Invoice> invoices = company.getInvoices();
-//        invoices.stream()
-//            .forEach(i -> invoiceRepository.save(i));
-
-        return transportCompanyRepository.save((TransportCompany)company);
+    public TransportCompany addCompany(TransportCompany company){
+        return transportCompanyRepository.save(company);
     }
     public List<TransportCompany> findAll(){
         return transportCompanyRepository.findAll();
@@ -32,7 +28,10 @@ public class TransportCompanyService {
         return transportCompanyRepository.findById(id);
     }
 
-    public TransportCompany updateCompany(Company company){
+    public TransportCompany updateCompany(Company company, Long id){
+        if(transportCompanyRepository.findById(id).isEmpty()){
+            throw new IllegalArgumentException("Can not find this company");
+        }
         return transportCompanyRepository.save((TransportCompany)company);
     }
 

@@ -13,6 +13,7 @@ public class Invoice {
     private Long id;
     private String name;
     private String surrName;
+    private  double amount;
 
     @ManyToOne
     @JsonIgnore
@@ -43,6 +44,14 @@ public class Invoice {
 
     public void setSurrName(String surrName) {
         this.surrName = surrName;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     public Company getCompany() {

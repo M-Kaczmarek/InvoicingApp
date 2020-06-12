@@ -19,6 +19,7 @@ public class InvoiceService {
     public Invoice addInvoice(Invoice invoice){
         return invoiceRepository.save(invoice);
     }
+
     public List<Invoice> findAll(){
         return invoiceRepository.findAll();
     }
@@ -27,7 +28,10 @@ public class InvoiceService {
         return invoiceRepository.findById(id);
     }
 
-    public Invoice updateInvoice(Invoice invoice){
+    public Invoice updateInvoice(Invoice invoice, Long id){
+        if(invoiceRepository.findById(id).isEmpty()){
+            throw new IllegalArgumentException("Can not find this invoice");
+        }
         return invoiceRepository.save(invoice);
     }
 

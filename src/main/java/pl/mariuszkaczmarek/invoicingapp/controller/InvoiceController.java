@@ -16,12 +16,10 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/invoice")
 public class InvoiceController {
-
-    Logger logger = LoggerFactory.getLogger(InvoiceController.class);
+    private Logger logger = LoggerFactory.getLogger(InvoiceController.class);
     private InvoiceService invoiceService;
 
     public InvoiceController(InvoiceService invoiceService) {
-
         this.invoiceService = invoiceService;
     }
 
@@ -37,13 +35,13 @@ public class InvoiceController {
     @ApiOperation(value = "Find invoice by id", notes = "Give the invoice from database by id", httpMethod = "GET")
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Invoice>> findById(@RequestParam Long id) {
-        logger.info("Starting find Invoice with id="+id);
+        logger.info("Starting find Invoice with id=" + id);
         Optional<Invoice> invoice = invoiceService.findById(id);
         if (invoice.isEmpty()) {
-            logger.info("Invoice does not exist with given id="+id);
+            logger.info("Invoice does not exist with given id=" + id);
             return ResponseEntity.notFound().build();
         }
-        logger.info("Found Invoice with id="+id);
+        logger.info("Found Invoice with id=" + id);
         return ResponseEntity.ok(invoice);
     }
 
@@ -52,16 +50,21 @@ public class InvoiceController {
     public ResponseEntity<Invoice> save(@RequestBody Invoice invoice) {
         logger.info("Starting save Invoice to database");
         Invoice result = invoiceService.addInvoice(invoice);
-        logger.info("Saved Invoice with id="+result.getId());
+        logger.info("Saved Invoice with id=" + result.getId());
         return ResponseEntity.created(URI.create("/" + result.getId())).build();
     }
 
     @ApiOperation(value = "Update the invoice", notes = "Correct invoice", httpMethod = "PUT")
-    @PutMapping
-    public ResponseEntity<Invoice> updateInvoice(@RequestBody Invoice invoice) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Invoice> updateInvoice(@RequestBody Invoice invoice,@PathVariable Long id) {
         logger.info("Starting update Invoice");
-        Invoice newInvoice = invoiceService.updateInvoice(invoice);
-        logger.info("Updated Invoice with id="+newInvoice.getId());
+        try {
+           invoiceService.updateInvoice(invoice, id);
+        }catch (IllegalArgumentException ex){
+            logger.info("Invoice does not exist with given id=" + id);
+            return ResponseEntity.notFound().build();
+        }
+        logger.info("Updated Invoice with id=" + id);
         return ResponseEntity.noContent().build();
     }
 
@@ -70,7 +73,7 @@ public class InvoiceController {
     public ResponseEntity<Void> deleteById(@RequestParam Long id) {
         logger.info("Starting delete Invoice");
         invoiceService.deleteById(id);
-        logger.info("Deleted Invoice with id="+id);
+        logger.info("Deleted Invoice with id=" + id);
         return ResponseEntity.noContent().build();
     }
 }
