@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import pl.mariuszkaczmarek.invoicingapp.model.Company;
 import pl.mariuszkaczmarek.invoicingapp.model.TransportCompany;
 import pl.mariuszkaczmarek.invoicingapp.service.TransportCompanyService;
-import pl.mariuszkaczmarek.invoicingapp.service.InvoiceService;
 
 import java.net.URI;
 import java.util.List;

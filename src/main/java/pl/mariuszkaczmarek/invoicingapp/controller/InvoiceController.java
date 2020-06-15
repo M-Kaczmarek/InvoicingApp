@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.mariuszkaczmarek.invoicingapp.model.Invoice;
-import pl.mariuszkaczmarek.invoicingapp.service.TransportCompanyService;
 import pl.mariuszkaczmarek.invoicingapp.service.InvoiceService;
 
 import java.net.URI;

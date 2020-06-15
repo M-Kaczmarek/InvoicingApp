@@ -32,9 +32,9 @@ public class InvoiceService {
         if(invoiceRepository.findById(id).isEmpty()){
             throw new IllegalArgumentException("Can not find this invoice");
         }
+        invoice.setId(id);
         return invoiceRepository.save(invoice);
     }
-
     public void deleteById(Long id){
         invoiceRepository.deleteById(id);
     }

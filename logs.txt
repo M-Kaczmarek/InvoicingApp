@@ -1,0 +1,146 @@
+2020-06-15 12:37:09.126  INFO 13684 --- [main] p.m.i.InvoicingappApplication            : Starting InvoicingappApplication on DESKTOP-66J6FCO with PID 13684 (C:\Users\Marian\Desktop\invoic-backend\InvoicingApp\target\classes started by Marian in C:\Users\Marian\Desktop\invoic-backend\InvoicingApp)
+2020-06-15 12:37:09.130  INFO 13684 --- [main] p.m.i.InvoicingappApplication            : No active profile set, falling back to default profiles: default
+2020-06-15 12:37:10.376  INFO 13684 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-06-15 12:37:10.434  INFO 13684 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 51ms. Found 2 JPA repository interfaces.
+2020-06-15 12:37:10.909  INFO 13684 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-06-15 12:37:10.917  INFO 13684 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-06-15 12:37:10.917  INFO 13684 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-06-15 12:37:11.022  INFO 13684 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-06-15 12:37:11.022  INFO 13684 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1820 ms
+2020-06-15 12:37:11.062  INFO 13684 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-06-15 12:37:11.158  INFO 13684 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-06-15 12:37:11.163  INFO 13684 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/conosle'. Database available at 'jdbc:h2:mem:invoicingapp'
+2020-06-15 12:37:11.268  INFO 13684 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-15 12:37:11.300  INFO 13684 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-06-15 12:37:11.337  INFO 13684 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.15.Final
+2020-06-15 12:37:11.438  INFO 13684 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-06-15 12:37:11.478  WARN 13684 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-06-15 12:37:11.526  INFO 13684 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-06-15 12:37:12.040  INFO 13684 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-06-15 12:37:12.045  INFO 13684 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-06-15 12:37:12.253  INFO 13684 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-15 12:37:12.586  INFO 13684 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-06-15 12:37:12.587  INFO 13684 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-06-15 12:37:12.599  INFO 13684 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-06-15 12:37:12.627  INFO 13684 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-06-15 12:37:12.737  INFO 13684 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteByIdUsingDELETE_1
+2020-06-15 12:37:12.740  INFO 13684 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllUsingGET_1
+2020-06-15 12:37:12.744  INFO 13684 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findByIdUsingGET_1
+2020-06-15 12:37:12.757  INFO 13684 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-06-15 12:37:12.819  INFO 13684 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-06-15 12:37:12.831  INFO 13684 --- [main] p.m.i.InvoicingappApplication            : Started InvoicingappApplication in 4.256 seconds (JVM running for 5.409)
+2020-06-15 12:37:22.609  INFO 13684 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-15 12:37:22.609  INFO 13684 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-06-15 12:37:22.615  INFO 13684 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2020-06-15 12:37:28.594  INFO 13684 --- [http-nio-8080-exec-9] p.m.i.controller.CompanyController       : Starting find all Transport companies
+2020-06-15 12:37:28.716  INFO 13684 --- [http-nio-8080-exec-9] p.m.i.controller.CompanyController       : Found all Transport companies
+2020-06-15 12:37:40.385  INFO 13684 --- [http-nio-8080-exec-2] p.m.i.controller.CompanyController       : Starting save Transport companies to database
+2020-06-15 12:37:40.432  INFO 13684 --- [http-nio-8080-exec-2] p.m.i.controller.CompanyController       : Saved transport company with id=1
+2020-06-15 12:37:44.846  INFO 13684 --- [http-nio-8080-exec-6] p.m.i.controller.CompanyController       : Starting find all Transport companies
+2020-06-15 12:37:44.853  INFO 13684 --- [http-nio-8080-exec-6] p.m.i.controller.CompanyController       : Found all Transport companies
+2020-06-15 12:37:56.673  INFO 13684 --- [http-nio-8080-exec-10] p.m.i.controller.CompanyController       : Starting find Transport companies with id=1
+2020-06-15 12:37:56.676  INFO 13684 --- [http-nio-8080-exec-10] p.m.i.controller.CompanyController       : Found transport company with id=1
+2020-06-15 12:38:26.298  INFO 13684 --- [http-nio-8080-exec-8] p.m.i.controller.CompanyController       : Starting update transport company
+2020-06-15 12:38:26.306  INFO 13684 --- [http-nio-8080-exec-8] p.m.i.controller.CompanyController       : Updated transport company with id=1
+2020-06-15 12:38:43.231  INFO 13684 --- [http-nio-8080-exec-9] p.m.i.controller.CompanyController       : Starting delete transport company
+2020-06-15 12:38:43.246  INFO 13684 --- [http-nio-8080-exec-9] p.m.i.controller.CompanyController       : Deleted transport company with id=1
+2020-06-15 12:39:58.285  INFO 4760 --- [main] p.m.i.InvoicingappApplication            : Starting InvoicingappApplication on DESKTOP-66J6FCO with PID 4760 (C:\Users\Marian\Desktop\invoic-backend\InvoicingApp\target\classes started by Marian in C:\Users\Marian\Desktop\invoic-backend\InvoicingApp)
+2020-06-15 12:39:58.288  INFO 4760 --- [main] p.m.i.InvoicingappApplication            : No active profile set, falling back to default profiles: default
+2020-06-15 12:39:59.667  INFO 4760 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-06-15 12:39:59.714  INFO 4760 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55ms. Found 2 JPA repository interfaces.
+2020-06-15 12:40:00.313  INFO 4760 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-06-15 12:40:00.321  INFO 4760 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-06-15 12:40:00.322  INFO 4760 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-06-15 12:40:00.452  INFO 4760 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-06-15 12:40:00.452  INFO 4760 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2122 ms
+2020-06-15 12:40:00.490  INFO 4760 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-06-15 12:40:00.584  INFO 4760 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-06-15 12:40:00.590  INFO 4760 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/conosle'. Database available at 'jdbc:h2:mem:invoicingapp'
+2020-06-15 12:40:00.698  INFO 4760 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-15 12:40:00.737  INFO 4760 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-06-15 12:40:00.776  INFO 4760 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.15.Final
+2020-06-15 12:40:00.891  INFO 4760 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-06-15 12:40:00.916  WARN 4760 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-06-15 12:40:00.978  INFO 4760 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-06-15 12:40:01.519  INFO 4760 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-06-15 12:40:01.524  INFO 4760 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-06-15 12:40:01.743  INFO 4760 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-15 12:40:02.083  INFO 4760 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-06-15 12:40:02.084  INFO 4760 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-06-15 12:40:02.095  INFO 4760 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-06-15 12:40:02.125  INFO 4760 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-06-15 12:40:02.245  INFO 4760 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteByIdUsingDELETE_1
+2020-06-15 12:40:02.247  INFO 4760 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllUsingGET_1
+2020-06-15 12:40:02.252  INFO 4760 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findByIdUsingGET_1
+2020-06-15 12:40:02.265  INFO 4760 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-06-15 12:40:02.323  INFO 4760 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-06-15 12:40:02.334  INFO 4760 --- [main] p.m.i.InvoicingappApplication            : Started InvoicingappApplication in 4.371 seconds (JVM running for 5.205)
+2020-06-15 12:41:11.468  INFO 10072 --- [main] p.m.i.InvoicingappApplication            : Starting InvoicingappApplication on DESKTOP-66J6FCO with PID 10072 (C:\Users\Marian\Desktop\invoic-backend\InvoicingApp\target\classes started by Marian in C:\Users\Marian\Desktop\invoic-backend\InvoicingApp)
+2020-06-15 12:41:11.472  INFO 10072 --- [main] p.m.i.InvoicingappApplication            : No active profile set, falling back to default profiles: default
+2020-06-15 12:41:12.840  INFO 10072 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-06-15 12:41:12.901  INFO 10072 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 54ms. Found 2 JPA repository interfaces.
+2020-06-15 12:41:13.446  INFO 10072 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-06-15 12:41:13.455  INFO 10072 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-06-15 12:41:13.456  INFO 10072 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-06-15 12:41:13.573  INFO 10072 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-06-15 12:41:13.573  INFO 10072 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2047 ms
+2020-06-15 12:41:13.616  INFO 10072 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-06-15 12:41:13.711  INFO 10072 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-06-15 12:41:13.717  INFO 10072 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/conosle'. Database available at 'jdbc:h2:mem:invoicingapp'
+2020-06-15 12:41:13.851  INFO 10072 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-15 12:41:13.890  INFO 10072 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-06-15 12:41:13.930  INFO 10072 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.15.Final
+2020-06-15 12:41:14.038  INFO 10072 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-06-15 12:41:14.070  WARN 10072 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-06-15 12:41:14.137  INFO 10072 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-06-15 12:41:14.704  INFO 10072 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-06-15 12:41:14.710  INFO 10072 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-06-15 12:41:14.945  INFO 10072 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-15 12:41:15.305  INFO 10072 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-06-15 12:41:15.306  INFO 10072 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-06-15 12:41:15.318  INFO 10072 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-06-15 12:41:15.348  INFO 10072 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-06-15 12:41:15.456  INFO 10072 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteByIdUsingDELETE_1
+2020-06-15 12:41:15.458  INFO 10072 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllUsingGET_1
+2020-06-15 12:41:15.461  INFO 10072 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findByIdUsingGET_1
+2020-06-15 12:41:15.475  INFO 10072 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-06-15 12:41:15.530  INFO 10072 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-06-15 12:41:15.539  INFO 10072 --- [main] p.m.i.InvoicingappApplication            : Started InvoicingappApplication in 4.52 seconds (JVM running for 5.393)
+2020-06-15 12:43:51.238  INFO 9164 --- [main] p.m.i.InvoicingappApplication            : Starting InvoicingappApplication on DESKTOP-66J6FCO with PID 9164 (C:\Users\Marian\Desktop\invoic-backend\InvoicingApp\target\classes started by Marian in C:\Users\Marian\Desktop\invoic-backend\InvoicingApp)
+2020-06-15 12:43:51.244  INFO 9164 --- [main] p.m.i.InvoicingappApplication            : No active profile set, falling back to default profiles: default
+2020-06-15 12:43:52.553  INFO 9164 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-06-15 12:43:52.615  INFO 9164 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55ms. Found 2 JPA repository interfaces.
+2020-06-15 12:43:53.120  INFO 9164 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2020-06-15 12:43:53.128  INFO 9164 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-06-15 12:43:53.129  INFO 9164 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-06-15 12:43:53.254  INFO 9164 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-06-15 12:43:53.254  INFO 9164 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1924 ms
+2020-06-15 12:43:53.299  INFO 9164 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-06-15 12:43:53.384  INFO 9164 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-06-15 12:43:53.389  INFO 9164 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/conosle'. Database available at 'jdbc:h2:mem:invoicingapp'
+2020-06-15 12:43:53.506  INFO 9164 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-15 12:43:53.543  INFO 9164 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-06-15 12:43:53.585  INFO 9164 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.15.Final
+2020-06-15 12:43:53.709  INFO 9164 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-06-15 12:43:53.758  WARN 9164 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-06-15 12:43:53.804  INFO 9164 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-06-15 12:43:54.339  INFO 9164 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-06-15 12:43:54.344  INFO 9164 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-06-15 12:43:54.597  INFO 9164 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-06-15 12:43:55.015  INFO 9164 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2020-06-15 12:43:55.016  INFO 9164 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-06-15 12:43:55.030  INFO 9164 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-06-15 12:43:55.065  INFO 9164 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-06-15 12:43:55.201  INFO 9164 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteByIdUsingDELETE_1
+2020-06-15 12:43:55.204  INFO 9164 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findAllUsingGET_1
+2020-06-15 12:43:55.211  INFO 9164 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: findByIdUsingGET_1
+2020-06-15 12:43:55.229  INFO 9164 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-06-15 12:43:55.299  INFO 9164 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-06-15 12:43:55.309  INFO 9164 --- [main] p.m.i.InvoicingappApplication            : Started InvoicingappApplication in 4.528 seconds (JVM running for 5.321)
+2020-06-15 12:44:00.649  INFO 9164 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-06-15 12:44:00.649  INFO 9164 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-06-15 12:44:00.657  INFO 9164 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2020-06-15 12:44:00.688  INFO 9164 --- [http-nio-8080-exec-1] p.m.i.controller.CompanyController       : Starting find all Transport companies
+2020-06-15 12:44:00.781  INFO 9164 --- [http-nio-8080-exec-1] p.m.i.controller.CompanyController       : Found all Transport companies
+2020-06-15 12:44:03.826  INFO 9164 --- [http-nio-8080-exec-2] p.m.i.controller.CompanyController       : Starting find all Transport companies
+2020-06-15 12:44:03.828  INFO 9164 --- [http-nio-8080-exec-2] p.m.i.controller.CompanyController       : Found all Transport companies

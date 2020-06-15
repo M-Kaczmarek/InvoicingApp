@@ -1,15 +1,12 @@
 package pl.mariuszkaczmarek.invoicingapp.model;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-//@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS, include = JsonTypeInfo.As.PROPERTY, property = "type")
-//@JsonSubTypes.Type(name = "transportCompany", value = TransportCompany.class)
+
 @MappedSuperclass
 public abstract class Company {
     @ApiModelProperty(hidden = true)

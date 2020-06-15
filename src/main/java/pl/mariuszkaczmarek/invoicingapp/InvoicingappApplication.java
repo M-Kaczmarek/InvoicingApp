@@ -1,8 +1,10 @@
 package pl.mariuszkaczmarek.invoicingapp;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 public class InvoicingappApplication {
@@ -11,4 +13,16 @@ public class InvoicingappApplication {
         SpringApplication.run(InvoicingappApplication.class, args);
     }
 
+    @Bean
+    public WebMvcConfigurer corsCofigure() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry
+                    .addMapping("/**")
+                    .allowedOrigins("http://localhost:3000")
+                    .allowedMethods("DELETE", "PUT", "GET", "POST");
+            }
+        };
+    }
 }
