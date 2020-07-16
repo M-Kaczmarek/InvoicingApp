@@ -6,4 +6,6 @@ import pl.mariuszkaczmarek.invoicingapp.model.TransportCompany;
 
 @Repository
 public interface TransportCompanyRepository extends JpaRepository<TransportCompany, Long> {
+
+    boolean existsByName(String name);
 }

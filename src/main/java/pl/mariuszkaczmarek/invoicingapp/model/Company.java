@@ -9,6 +9,7 @@ import java.util.Set;
 
 @MappedSuperclass
 public abstract class Company {
+
     @ApiModelProperty(hidden = true)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

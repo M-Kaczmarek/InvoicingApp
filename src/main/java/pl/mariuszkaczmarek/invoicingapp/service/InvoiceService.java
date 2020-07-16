@@ -1,11 +1,12 @@
 package pl.mariuszkaczmarek.invoicingapp.service;
 
 import org.springframework.stereotype.Service;
+import pl.mariuszkaczmarek.invoicingapp.exception.ExistInvoiceException;
+import pl.mariuszkaczmarek.invoicingapp.exception.NotFoundInvoiceException;
 import pl.mariuszkaczmarek.invoicingapp.model.Invoice;
 import pl.mariuszkaczmarek.invoicingapp.repostiory.InvoiceRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class InvoiceService {
@@ -16,26 +17,31 @@ public class InvoiceService {
         this.invoiceRepository = invoiceRepository;
     }
 
-    public Invoice addInvoice(Invoice invoice){
+    public Invoice addInvoice(Invoice invoice) {
+        if (invoiceRepository.existsByNameAndSurrName(invoice.getName(), invoice.getSurrName())) {
+            throw new ExistInvoiceException("Invoice already exist");
+        }
+
         return invoiceRepository.save(invoice);
     }
 
-    public List<Invoice> findAll(){
+    public List<Invoice> findAll() {
         return invoiceRepository.findAll();
     }
 
-    public Optional<Invoice> findById(Long id){
-        return invoiceRepository.findById(id);
+    public Invoice findById(Long id) {
+        return invoiceRepository.findById(id).orElseThrow(() -> new NotFoundInvoiceException("Invoice not found"));
     }
 
-    public Invoice updateInvoice(Invoice invoice, Long id){
-        if(invoiceRepository.findById(id).isEmpty()){
-            throw new IllegalArgumentException("Can not find this invoice");
-        }
+    public Invoice updateInvoice(Invoice invoice, Long id) {
+        invoiceRepository.findById(id).orElseThrow(() -> new NotFoundInvoiceException("Invoice not found"));
         invoice.setId(id);
+
         return invoiceRepository.save(invoice);
     }
-    public void deleteById(Long id){
+
+    public void deleteById(Long id) {
+        invoiceRepository.findById(id).orElseThrow(() -> new NotFoundInvoiceException("Invoice not found"));
         invoiceRepository.deleteById(id);
     }
 }

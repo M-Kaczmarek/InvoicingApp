@@ -1,76 +1,129 @@
 package pl.mariuszkaczmarek.invoicingapp.service;
 
-import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.mariuszkaczmarek.invoicingapp.model.TransportCompany;
 import pl.mariuszkaczmarek.invoicingapp.repostiory.TransportCompanyRepository;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.*;
 
 class TransportCompanyServiceTest {
 
-    @Test
-    @DisplayName("Should find all company and show company")
-    void should_show_all_added_transportCompany() {
-        //given
-        var transportCompanyRepository = mock(TransportCompanyRepository.class);
-        var transportCompanyService = new TransportCompanyService(transportCompanyRepository);
-        List<TransportCompany> companyList = new ArrayList<>();
-        var transportCompany1 = new TransportCompany();
-        var transportCompany2 = new TransportCompany();
-        companyList.add(transportCompany1);
-        companyList.add(transportCompany2);
-        when(transportCompanyRepository.findAll()).thenReturn(companyList);
+    private TransportCompanyRepository transportCompanyRepository;
 
-        //when
-        var transportCompanyList = transportCompanyService.findAll();
+    private TransportCompanyService transportCompanyService;
 
-        //then
-        assertThat(transportCompanyList).hasSize(companyList.size());
+    private TransportCompany transportCompany1;
+
+    @BeforeEach
+    void setup() {
+        transportCompanyRepository = mock(TransportCompanyRepository.class);
+        transportCompanyService = new TransportCompanyService(transportCompanyRepository);
+        transportCompany1 = new TransportCompany();
+        transportCompany1.setName("ExampleCompany");
     }
 
     @Test
-    @DisplayName("Should find company by id and show this company")
-    void should_show_company_by_id(){
+    void findById_should_find_company() {
         //given
-        var transportCompanyRepository = mock(TransportCompanyRepository.class);
-        var transportCompanyService = new TransportCompanyService(transportCompanyRepository);
-        List<TransportCompany> companyList = new ArrayList<>();
-        var transportCompany1 = new TransportCompany();
-        var transportCompany2 = new TransportCompany();
-        companyList.add(transportCompany1);
-        companyList.add(transportCompany2);
-        when(transportCompanyService.findById(1L)).thenReturn(Optional.of(companyList.get(1)));
+        when(transportCompanyRepository.findById(1L)).thenReturn(Optional.of(transportCompany1));
 
         //when
-        Optional<TransportCompany> company = transportCompanyService.findById(1L);
+        TransportCompany company = transportCompanyService.findById(1L);
 
         //then
-        assertThat(company.get()).isEqualTo(companyList.get(1));
+        assertThat(company).isEqualTo(transportCompany1);
     }
+
     @Test
-    @DisplayName("Should save company and return this company")
-    void should_save_company() {
+    void findById_should_throw_NotFoundCompanyException() {
         //given
-        var transportCompanyRepository = mock(TransportCompanyRepository.class);
-        var transportCompanyService = new TransportCompanyService(transportCompanyRepository);
-        var transportCompany1 = new TransportCompany();
+
+        //when
+        var exception = catchThrowable(() -> transportCompanyService.findById(2L));
+
+        //then
+        assertThat(exception.getMessage()).isEqualTo("Company not found");
+    }
+
+    @Test
+    void addCompany_should_add_company() {
+        //given
         when(transportCompanyRepository.save(any(TransportCompany.class))).thenReturn(transportCompany1);
 
         //when
-        TransportCompany transportCompany = transportCompanyService.addCompany(transportCompany1);
+        var transportCompany = transportCompanyService.addCompany(transportCompany1);
 
         //then
         assertThat(transportCompany).isNotNull();
         assertThat(transportCompany).isEqualTo(transportCompany1);
 
-
     }
+
+    @Test
+    void addCompany_should_throw_ExistCompanyException() {
+        //when
+        when(transportCompanyRepository.existsByName(anyString())).thenReturn(true);
+
+        //when
+        var exception = catchThrowable(() -> transportCompanyService.addCompany(transportCompany1));
+
+        //then
+        assertThat(exception.getMessage()).isEqualTo("Company already exists");
+    }
+
+    @Test
+    void updateCompany_should_update_company() {
+        //given
+        when(transportCompanyRepository.findById(anyLong())).thenReturn(Optional.of(transportCompany1));
+        when(transportCompanyRepository.save(any())).thenReturn(transportCompany1);
+
+        //when
+        var updatedCompany = transportCompanyService.updateCompany(transportCompany1, 3L);
+
+        //then
+        assertThat(updatedCompany).isEqualTo(transportCompany1);
+    }
+
+    @Test
+    void updateCompany_should_throw_NotFoundCompanyException() {
+        //given
+
+        //when
+        var exception = catchThrowable(() -> transportCompanyService.updateCompany(transportCompany1, 2L));
+
+        //then
+        assertThat(exception.getMessage()).isEqualTo("Company not found");
+    }
+
+    @Test
+    void deleteById_should_delete_company() {
+        //given
+        when(transportCompanyRepository.findById(anyLong())).thenReturn(Optional.of(transportCompany1));
+
+        //given
+        transportCompanyService.deleteById(3L);
+
+        //when
+        verify(transportCompanyRepository, times(1)).deleteById(3L);
+    }
+
+    @Test
+    void deleteById_should_throw_NotFoundCompanyException() {
+        //given
+
+        //when
+        var exception = catchThrowable(() -> transportCompanyService.deleteById(1L));
+
+        //then
+        assertThat(exception.getMessage()).isEqualTo("Company not found");
+    }
+
+
 }

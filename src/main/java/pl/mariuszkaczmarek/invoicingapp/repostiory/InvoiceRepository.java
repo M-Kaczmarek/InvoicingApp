@@ -6,4 +6,6 @@ import pl.mariuszkaczmarek.invoicingapp.model.Invoice;
 
 @Repository
 public interface InvoiceRepository extends JpaRepository<Invoice, Long> {
+
+    boolean existsByNameAndSurrName(String name, String surrName);
 }
