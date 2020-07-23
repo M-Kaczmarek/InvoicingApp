@@ -38,7 +38,7 @@ public class CompanyController {
 
     @ApiOperation(value = "Save the company", notes = "Save the company with invoices to database", httpMethod = "POST")
     @PostMapping
-    public ResponseEntity<Company> saveTransportCompany(@RequestBody TransportCompany company) {
+    public ResponseEntity<TransportCompany> saveTransportCompany(@RequestBody TransportCompany company) {
         TransportCompany transportCompany = transportCompanyService.addCompany(company);
 
         return ResponseEntity.created(URI.create("/" + transportCompany.getId())).body(transportCompany);

@@ -10,6 +10,8 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
+import pl.mariuszkaczmarek.invoicingapp.exception.ExistCompanyException;
+import pl.mariuszkaczmarek.invoicingapp.exception.NotFoundCompanyException;
 import pl.mariuszkaczmarek.invoicingapp.model.TransportCompany;
 import pl.mariuszkaczmarek.invoicingapp.repostiory.TransportCompanyRepository;
 import pl.mariuszkaczmarek.invoicingapp.service.TransportCompanyService;
@@ -58,7 +60,7 @@ class CompanyControllerIT {
         var size = this.transportCompanyRepository.findAll().size();
 
         //when
-        ResponseEntity<TransportCompany[]> result = testRestTemplate.getForEntity(url, TransportCompany[].class);
+        var result = testRestTemplate.getForEntity(url, TransportCompany[].class);
 
         //then
         assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -71,7 +73,7 @@ class CompanyControllerIT {
         url += ("/" + transportCompany.getId());
 
         //when
-        ResponseEntity<TransportCompany> result = testRestTemplate.getForEntity(url, TransportCompany.class);
+        var result = testRestTemplate.getForEntity(url, TransportCompany.class);
 
         //then
         assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -84,10 +86,11 @@ class CompanyControllerIT {
         url += ("/" + 234);
 
         //when
-        ResponseEntity<TransportCompany> result = testRestTemplate.getForEntity(url, TransportCompany.class);
+        var result = testRestTemplate.getForEntity(url, NotFoundCompanyException.class);
 
         //then
         assertThat(result.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+        assertThat(result.getBody().getMessage()).isEqualTo("Company not found");
     }
 
     @Test
@@ -108,10 +111,11 @@ class CompanyControllerIT {
         //given
 
         //when
-        var result = testRestTemplate.postForEntity(url, transportCompany, TransportCompany.class);
+        var result = testRestTemplate.postForEntity(url, transportCompany, ExistCompanyException.class);
 
         //then
         assertThat(result.getStatusCode()).isEqualTo(HttpStatus.CONFLICT);
+        assertThat(result.getBody().getMessage()).isEqualTo("Company already exists");
     }
 
     @Test
@@ -134,10 +138,11 @@ class CompanyControllerIT {
         url += ("/" + 234);
 
         //when
-        var result = testRestTemplate.exchange(url, HttpMethod.PUT, new HttpEntity<>(transportCompany, new HttpHeaders()), TransportCompany.class);
+        var result = testRestTemplate.exchange(url, HttpMethod.PUT, new HttpEntity<>(transportCompany, new HttpHeaders()), NotFoundCompanyException.class);
 
         //then
         assertThat(result.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+        assertThat(result.getBody().getMessage()).isEqualTo("Company not found");
     }
 
     @Test
@@ -159,10 +164,11 @@ class CompanyControllerIT {
         url += ("/" + 234);
 
         //when
-        var result = testRestTemplate.exchange(url, HttpMethod.DELETE, new HttpEntity<>(null, new HttpHeaders()), TransportCompany.class);
+        var result = testRestTemplate.exchange(url, HttpMethod.DELETE, new HttpEntity<>(null, new HttpHeaders()), NotFoundCompanyException.class);
 
         //then
         assertThat(result.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+        assertThat(result.getBody().getMessage()).isEqualTo("Company not found");
     }
 
 }

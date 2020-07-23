@@ -13,6 +13,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit4.SpringRunner;
+import pl.mariuszkaczmarek.invoicingapp.exception.ExistInvoiceException;
+import pl.mariuszkaczmarek.invoicingapp.exception.NotFoundInvoiceException;
 import pl.mariuszkaczmarek.invoicingapp.model.Invoice;
 import pl.mariuszkaczmarek.invoicingapp.repostiory.InvoiceRepository;
 import pl.mariuszkaczmarek.invoicingapp.service.InvoiceService;
@@ -87,10 +89,11 @@ class InvoiceControllerTestIT {
         url += ("/" + 123);
 
         //when
-        var result = testRestTemplate.getForEntity(url, Invoice.class);
+        var result = testRestTemplate.getForEntity(url, NotFoundInvoiceException.class);
 
         //then
         assertThat(result.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+        assertThat(result.getBody().getMessage()).isEqualTo("Invoice not found");
     }
 
     @Test
@@ -111,10 +114,11 @@ class InvoiceControllerTestIT {
         //given
 
         //when
-        var result = testRestTemplate.postForEntity(url, invoice, Invoice.class);
+        var result = testRestTemplate.postForEntity(url, invoice, ExistInvoiceException.class);
 
         //then
         assertThat(result.getStatusCode()).isEqualTo(HttpStatus.CONFLICT);
+        assertThat(result.getBody().getMessage()).isEqualTo("Invoice already exist");
     }
 
     @Test
@@ -137,10 +141,11 @@ class InvoiceControllerTestIT {
         //given
         url += ("/" + 123);
         //when
-        var result = testRestTemplate.exchange(url, HttpMethod.PUT, new HttpEntity<>(invoice, new HttpHeaders()), Invoice.class);
+        var result = testRestTemplate.exchange(url, HttpMethod.PUT, new HttpEntity<>(invoice, new HttpHeaders()), NotFoundInvoiceException.class);
 
         //then
         assertThat(result.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+        assertThat(result.getBody().getMessage()).isEqualTo("Invoice not found");
     }
 
     @Test
@@ -160,12 +165,13 @@ class InvoiceControllerTestIT {
     void deleteById_should_result_noFound() {
         //given
         url += ("/" + 123);
-        
+
         //when
-        var result = testRestTemplate.exchange(url, HttpMethod.DELETE, new HttpEntity<>(null, new HttpHeaders()), Invoice.class);
+        var result = testRestTemplate.exchange(url, HttpMethod.DELETE, new HttpEntity<>(null, new HttpHeaders()), NotFoundInvoiceException.class);
 
         //then
         assertThat(result.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+        assertThat(result.getBody().getMessage()).isEqualTo("Invoice not found");
     }
 
 

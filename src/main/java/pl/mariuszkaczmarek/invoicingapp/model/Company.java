@@ -14,6 +14,7 @@ public abstract class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
 
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
